@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                mvn Build
+            }
+        }
+		
+		stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                mvn deploy
+            }
+        }
+		
+		stage('clean install') {
+            steps {
+                echo 'Building...'
+                mvn clean install
+            }
+        }
+		
+		stage('package') {
+            steps {
+                echo 'Building...'
+                mvn package
+            }
+        }
+		
+		stage('install') {
+            steps {
+                echo 'Deploying...'
+               mvn install
+            }
+        }
+    }
+}
